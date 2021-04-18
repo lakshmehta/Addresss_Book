@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Address_Book
@@ -202,5 +203,26 @@ namespace Address_Book
             }
             return count;
         }
-    } 
+        public static void PrintNameInAlphabeticalOrder(string bookName)
+        {
+            if (Program.addressBookStore.ContainsKey(bookName))
+            {
+                List<AddContact> book = Program.addressBookStore[bookName];
+                book.Sort((x, y) => string.Compare(x.first_name, y.first_name));
+
+                book.Sort();
+                Console.WriteLine("Book Name : " + bookName);
+                var peopleInOrder = book.OrderBy(person => person.first_name);
+                foreach (AddContact person in peopleInOrder)
+                {
+                    Console.WriteLine("All Details :" + person.toString());
+                }
+            }
+            else
+            {
+                Console.WriteLine("Book Not Found!");
+            }
+        }
+
+    }
 }
