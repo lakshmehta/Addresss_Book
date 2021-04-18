@@ -1,5 +1,6 @@
 ﻿using Address_Book;
 using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -14,7 +15,7 @@ namespace AddressBookSystem
 
         public static void ReadFromStreamReader()
         {
-            String path = "E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\AddreddBook.txt";
+            String path = "F://Address_Book//Address_Book//AddressBook.txt";
             try
             {
                 if (File.Exists(path))
@@ -42,7 +43,7 @@ namespace AddressBookSystem
 
         public static void WriteUsingStreamWriter()
         {
-            String path = "E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\AddreddBook.txt";
+            String path = "F://Address_Book//Address_Book//AddressBook.txt";
             try
             {
                 if (File.Exists(path))
@@ -85,8 +86,8 @@ namespace AddressBookSystem
 
         public static void ReadFromCSVReader()
         {
-            string importFilePath = "E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\ContactData.csv";
-            string exportFilePath = "E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\exportData.csv";
+            string importFilePath = "F:\\Address_Book\\Address_Book\\ContactData.csv";
+            string exportFilePath = "F:\\Address_Book\\Address_Book\\ExportData.csv";
 
             using (var reader = new StreamReader(importFilePath))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
@@ -114,6 +115,64 @@ namespace AddressBookSystem
                     }
                 }
             }
+        }
+        static string jsonFilePath = "E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\jsonFile.json";
+
+        public static void ReadFromJSONFile()
+        {
+
+
+            var jsonData = File.ReadAllText(jsonFilePath);
+            /*  if (jsonData.Length > 0)
+              {
+                  Contact contact = JsonConvert.DeserializeObject<Contact>(jsonData);
+                Console.WriteLine(contact);
+               }
+              else
+                  Console.WriteLine("No Data Avalaible!");*/
+            Console.WriteLine(jsonData);
+
+        }
+
+
+
+
+        public static void WriteIntoJSONFile()
+        {
+
+            AddContact person = new AddContact();
+            Console.WriteLine("Enter All Details Like: ");
+            Console.WriteLine("Enter First_Name: ");
+            person.first_name = Console.ReadLine();
+            Console.WriteLine("Enter Last Name:");
+            person.last_name = Console.ReadLine();
+            Console.WriteLine("Enter Addree :");
+            person.address = Console.ReadLine();
+            Console.WriteLine("Enter City Name:");
+            person.city = Console.ReadLine();
+            Console.WriteLine("Enter State Name:");
+            person.state = Console.ReadLine();
+            Console.WriteLine("Enter pin Number:");
+            person.zip = Console.ReadLine();
+            Console.WriteLine("Enter Phone Number:");
+            person.phone_number = Console.ReadLine();
+            Console.WriteLine("Enter Email:");
+            person.email = Console.ReadLine();
+
+
+            string jsonFilePath = "F:\\Address_Book\\Address_Book\\jsonFile.json";
+            var jsonData = JsonConvert.SerializeObject(person);
+            if (File.Exists(jsonFilePath))
+            {
+                File.AppendAllText(jsonFilePath, jsonData + Environment.NewLine);
+            }
+            else
+            {
+                Console.WriteLine("File doesn't exists");
+            }
+
+
+
         }
 
 

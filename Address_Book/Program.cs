@@ -13,7 +13,7 @@ namespace Address_Book
             Console.WriteLine("Hello Welcome to the Address Book");
 
             int choice = 0;
-            while (choice != 11)
+            while (choice != 13)
             {
                 Console.WriteLine("1.Add Contacts");
                 Console.WriteLine("2.Edit Existing Contact");
@@ -24,8 +24,10 @@ namespace Address_Book
                 Console.WriteLine("7.To ordered the record by city or state or zip Please enter book name");
                 Console.WriteLine("8.To Read Data from file");
                 Console.WriteLine("9.To Append Data into file");
-                Console.WriteLine("11.close");
+                Console.WriteLine("13.close");
                 Console.WriteLine("10.To Read Data from CSV file");
+                Console.WriteLine("11.To Read Data JSON  file");
+                Console.WriteLine("12.To Write Data in JSON  file");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -80,7 +82,13 @@ namespace Address_Book
                         FileOperation.ReadFromCSVReader();
                         break;
                     case 11:
-                        choice = 10;
+                        FileOperation.ReadFromJSONFile();
+                        break;
+                    case 12:
+                        FileOperation.WriteIntoJSONFile();
+                        break;
+                    case 13:
+                        choice = 13;
                         break;
                    
                     default:
