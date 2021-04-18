@@ -12,14 +12,15 @@ namespace Address_Book
             Console.WriteLine("Hello Welcome to the Address Book");
 
             int choice = 0;
-            while (choice != 6)
+            while (choice != 7)
             {
                 Console.WriteLine("1.Add Contacts");
                 Console.WriteLine("2.Edit Existing Contact");
                 Console.WriteLine("3.Delete Person Details");
                 Console.WriteLine("4.Search persons using city or state");
                 Console.WriteLine("5.Search Number of persons in city or state");
-                Console.WriteLine("6.close");
+                Console.WriteLine("6.Enter name of the address book you want to  record in sorting order");
+                Console.WriteLine("7.close");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -53,6 +54,12 @@ namespace Address_Book
                         Console.WriteLine("Total number of persons are :" + numberOfPerson);
                         break;
                     case 6:
+                        Console.WriteLine("Enter name of the address book you want to  record in sorting order");
+                        String bookName2 = Console.ReadLine();
+                        AddressBookMain.PrintNameInAlphabeticalOrder(bookName2);
+                        break;
+
+                    case 7:
                         choice = 6;
                         break;
                    
