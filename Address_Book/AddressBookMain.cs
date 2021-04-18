@@ -8,6 +8,7 @@ namespace Address_Book
     {
         public static void addBook(string bookName)
         {
+            int flag = 0;
             if (!Program.addressBookStore.ContainsKey(bookName))
             {
                 Program.addressBookStore.Add(bookName, new List<AddContact>());
@@ -32,10 +33,25 @@ namespace Address_Book
             person.email = Console.ReadLine();
 
             List<AddContact> book = Program.addressBookStore[bookName];
-            book.Add(person);
-            Console.WriteLine("***************************************");
-            Console.WriteLine("Your Record Added To :[" + bookName + " Book]");
-            Console.WriteLine(person.ToString());
+           
+            foreach (AddContact record in book)
+            {
+                if (record.first_name == person.first_name)
+                {
+                    Console.WriteLine("Person Already exist");
+                    flag = 1;
+                    break;
+                }
+            }
+            if (flag == 0)
+            {
+                book.Add(person);
+                Console.WriteLine("***************************************");
+                Console.WriteLine("Your Record Added To :[" + bookName + " Book]");
+                Console.WriteLine(person.toString());
+
+
+            }
 
 
         }
