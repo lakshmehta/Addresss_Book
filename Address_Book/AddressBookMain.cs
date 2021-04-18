@@ -223,6 +223,47 @@ namespace Address_Book
                 Console.WriteLine("Book Not Found!");
             }
         }
+        public static void sortEntriesInAlphabeticalOrderUsingCityStateOrZip(string cityOrStateOrZip, string bookName)
+        {
+            if (Program.addressBookStore.ContainsKey(bookName))
+            {
+                List<AddContact> record = Program.addressBookStore[bookName];
+                Console.WriteLine("Book Name : " + bookName);
+                var orderedRecords = record.OrderBy(c => c.city).ThenBy(c => c.state).ThenBy(c => c.zip);
+                switch (cityOrStateOrZip)
+                {
+                    case "city":
+                        var orderedRecords1 = record.OrderBy(person => person.city);
+                        foreach (AddContact person in orderedRecords1)
+                        {
+                            Console.WriteLine("All Details :" + person.toString());
+                        }
+                        break;
+                    case "state":
+                        var orderedRecords2 = record.OrderBy(person => person.state);
+                        foreach (AddContact person in orderedRecords2)
+                        {
+                            Console.WriteLine("All Details :" + person.toString());
+                        }
+                        break;
+                    case "zip":
+                        var orderedRecords3 = record.OrderBy(person => person.zip);
+                        foreach (AddContact person in orderedRecords3)
+                        {
+                            Console.WriteLine("All Details :" + person.toString());
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice");
+                        break;
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("Book not found!");
+            }
+        }
 
     }
 }
