@@ -12,7 +12,7 @@ namespace Address_Book
             Console.WriteLine("Hello Welcome to the Address Book");
 
             int choice = 0;
-            while (choice != 7)
+            while (choice != 8)
             {
                 Console.WriteLine("1.Add Contacts");
                 Console.WriteLine("2.Edit Existing Contact");
@@ -20,7 +20,8 @@ namespace Address_Book
                 Console.WriteLine("4.Search persons using city or state");
                 Console.WriteLine("5.Search Number of persons in city or state");
                 Console.WriteLine("6.Enter name of the address book you want to  record in sorting order");
-                Console.WriteLine("7.close");
+                Console.WriteLine("7.To ordered the record by city or state or zip Please enter book name");
+                Console.WriteLine("8.close");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -58,9 +59,15 @@ namespace Address_Book
                         String bookName2 = Console.ReadLine();
                         AddressBookMain.PrintNameInAlphabeticalOrder(bookName2);
                         break;
-
                     case 7:
-                        choice = 6;
+                        Console.WriteLine("8.To ordered the record by city or state or zip Please enter any one city,state or zip");
+                        String cityOrStateOrZip = Console.ReadLine();
+                        Console.WriteLine("Enter bookName");
+                        string bookName3 = Console.ReadLine();
+                        AddressBookMain.sortEntriesInAlphabeticalOrderUsingCityStateOrZip(cityOrStateOrZip, bookName3);
+                        break;
+                    case 8:
+                        choice = 8;
                         break;
                    
                     default:
