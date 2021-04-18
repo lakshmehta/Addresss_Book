@@ -33,24 +33,16 @@ namespace Address_Book
             person.email = Console.ReadLine();
 
             List<AddContact> book = Program.addressBookStore[bookName];
-           
-            foreach (AddContact record in book)
+            if (book.Exists(x => x.Equals(person.first_name)))
             {
-                if (record.first_name == person.first_name)
-                {
-                    Console.WriteLine("Person Already exist");
-                    flag = 1;
-                    break;
-                }
+                Console.WriteLine("Person Allready exist");
             }
-            if (flag == 0)
+            else
             {
                 book.Add(person);
                 Console.WriteLine("***************************************");
                 Console.WriteLine("Your Record Added To :[" + bookName + " Book]");
                 Console.WriteLine(person.toString());
-
-
             }
 
 
