@@ -169,5 +169,21 @@ namespace Address_Book
             }
 
         }
+        public static void searchPersonUsingCityOrStateInMultipleBooks(string cityOrState)
+        {
+            List<AddContact> record = new List<AddContact>();
+            foreach (string bookName in Program.addressBookStore.Keys)
+            {
+                record = Program.addressBookStore[bookName];
+                foreach (AddContact person in record)
+                {
+                    if (record.Exists(x => x.city == cityOrState || x.state == cityOrState))
+                    {
+                        Console.WriteLine("Book Name : " + bookName);
+                        Console.WriteLine("All Details :" + person.toString());
+                    }
+                }
+            }
+        }
     } 
 }

@@ -12,12 +12,13 @@ namespace Address_Book
             Console.WriteLine("Hello Welcome to the Address Book");
 
             int choice = 0;
-            while (choice != 4)
+            while (choice != 5)
             {
                 Console.WriteLine("1.Add Contacts");
                 Console.WriteLine("2.Edit Existing Contact");
                 Console.WriteLine("3.Delete Person Details");
-                Console.WriteLine("4.close");
+                Console.WriteLine("4.Search persons using city or state");
+                Console.WriteLine("5.close");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -40,8 +41,14 @@ namespace Address_Book
                         AddressBookMain.delete(bookName1);
                         break;
                     case 4:
-                        choice = 4;
+                        Console.WriteLine("Enter city or state to find a person");
+                        string cityOrState = Console.ReadLine();
+                        AddressBookMain.searchPersonUsingCityOrStateInMultipleBooks(cityOrState);
                         break;
+                    case 5:
+                        choice = 5;
+                        break;
+                   
                     default:
                         Console.WriteLine("Invalid choice !");
                         break;
