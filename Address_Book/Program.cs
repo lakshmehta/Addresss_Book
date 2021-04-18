@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AddressBookSystem;
+using System;
 using System.Collections.Generic;
 
 namespace Address_Book
@@ -12,7 +13,7 @@ namespace Address_Book
             Console.WriteLine("Hello Welcome to the Address Book");
 
             int choice = 0;
-            while (choice != 10)
+            while (choice != 11)
             {
                 Console.WriteLine("1.Add Contacts");
                 Console.WriteLine("2.Edit Existing Contact");
@@ -23,7 +24,8 @@ namespace Address_Book
                 Console.WriteLine("7.To ordered the record by city or state or zip Please enter book name");
                 Console.WriteLine("8.To Read Data from file");
                 Console.WriteLine("9.To Append Data into file");
-                Console.WriteLine("10.close");
+                Console.WriteLine("11.close");
+                Console.WriteLine("10.To Read Data from CSV file");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -75,6 +77,9 @@ namespace Address_Book
                         FileOperation.WriteUsingStreamWriter();
                         break;
                     case 10:
+                        FileOperation.ReadFromCSVReader();
+                        break;
+                    case 11:
                         choice = 10;
                         break;
                    
